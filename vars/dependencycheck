@@ -1,6 +1,5 @@
 def owaspdependency(){
-         
-               dependencyCheck additionalArguments: ''' 
+           dependencyCheck additionalArguments: ''' 
                     -o './'
                     -s './'
                     -f 'ALL' 
