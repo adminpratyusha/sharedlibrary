@@ -1,4 +1,4 @@
-    def sonarscanner(String projectName, String projectKey,String projectV){
+    def sonarscanner(String projectName, String projectKey){
                                 sh """${scannerHome}/bin/sonar-scanner \
                                 -Dsonar.projectKey=${projectKey} \
                                 -Dsonar.projectName=${projectName} \
