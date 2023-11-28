@@ -1,4 +1,4 @@
-     def nexus(String NEXUS_URL){
+     def nexus(String NEXUS_URL,String BUILD_ID){
                     pom = readMavenPom file: "pom.xml";
                     filesByGlob = findFiles(glob: "target/*.${pom.packaging}");
                     echo "${filesByGlob[0].name} ${filesByGlob[0].path} ${filesByGlob[0].directory} ${filesByGlob[0].length} ${filesByGlob[0].lastModified}"
@@ -6,6 +6,7 @@
 	            echo "${artifactPath}"
                     artifactExists = fileExists artifactPath;
                     if(artifactExists) {
+		        def versionWithBuildId = "${pom.version}-${BUILD_ID}"
                         echo "*** File: ${artifactPath}, group: ${pom.groupId}, packaging: ${pom.packaging}, version ${pom.version}";
                         nexusArtifactUploader(
                             nexusVersion: NEXUS_VERSION,
