@@ -6,7 +6,7 @@
 	            echo "${artifactPath}"
                     artifactExists = fileExists artifactPath;
                     if(artifactExists) {
-		        def versionWithBuildId = "${pom.version}-${BUILD_ID}"
+		        def versionWithBuildId = "1.0/${pom.version}-${BUILD_ID}"
                         echo "*** File: ${artifactPath}, group: ${pom.groupId}, packaging: ${pom.packaging}, version ${pom.version}";
                         nexusArtifactUploader(
                             nexusVersion: NEXUS_VERSION,
