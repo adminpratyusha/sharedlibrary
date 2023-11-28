@@ -2,11 +2,12 @@
                     pom = readMavenPom file: "pom.xml";
                     filesByGlob = findFiles(glob: "target/*.${pom.packaging}");
                     echo "${filesByGlob[0].name} ${filesByGlob[0].path} ${filesByGlob[0].directory} ${filesByGlob[0].length} ${filesByGlob[0].lastModified}"
-                    artifactPath = filesByGlob[0].path;
+                    def folderName = "${pom.version}"
+                    artifactPath = filesByGlob[0].path/"${folderName}";
 	            echo "${artifactPath}"
                     artifactExists = fileExists artifactPath;
                     if(artifactExists) {
-		        def versionWithBuildId = "1.0/${pom.version}-${BUILD_ID}"
+		        def versionWithBuildId = "${pom.version}-${BUILD_ID}"
                         echo "*** File: ${artifactPath}, group: ${pom.groupId}, packaging: ${pom.packaging}, version ${pom.version}";
                         nexusArtifactUploader(
                             nexusVersion: NEXUS_VERSION,
