@@ -3,7 +3,7 @@ def docker(String IMAGE_NAME,String BUILD_ID,String dockercred){
                     def dockerImage = docker.build("${IMAGE_NAME}:${BUILD_ID}")
 
                     
-                    docker.withRegistry('https://registry.hub.docker.com', '$dockercred') {
+                    docker.withRegistry('https://registry.hub.docker.com', dockercred) {
                         dockerImage.push()
 
 
