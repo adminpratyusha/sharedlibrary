@@ -7,8 +7,6 @@
                     artifactExists = fileExists artifactPath;
                     if(artifactExists) {
 		        def versionWithBuildId = "${pom.version}-${BUILD_ID}"
-			    def folderPath = "target/${pom.version}"
-        sh "mkdir -p ${folderPath}"
                         echo "*** File: ${artifactPath}, group: ${pom.groupId}, packaging: ${pom.packaging}, version ${pom.version}";
                         nexusArtifactUploader(
                             nexusVersion: NEXUS_VERSION,
@@ -21,7 +19,7 @@
                             artifacts: [
                                 [artifactId: pom.artifactId,
                                 classifier: '',
-                                file: "${folderPath}/${filesByGlob[0].name}",
+                                file: artifactPath,
                                 type: pom.packaging],
                                 [artifactId: pom.artifactId,
                                 classifier: '',
