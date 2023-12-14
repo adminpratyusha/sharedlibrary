@@ -27,6 +27,7 @@
                                 type: "pom"]
                             ]
                         );
+			    echo "${versionWithBuildId}"
 			    return versionWithBuildId
                     } 
 		    else {
