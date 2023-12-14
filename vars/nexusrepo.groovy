@@ -27,8 +27,10 @@
                                 type: "pom"]
                             ]
                         );
+			    return versionWithBuildId
                     } 
 		    else {
                         error "*** File: ${artifactPath}, could not be found";
+			    return null
                     }
 }
